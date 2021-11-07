@@ -3,6 +3,20 @@
 @using System.Globalization;
 @using GWS_MVC.Controllers;
 
+@using Newtonsoft.Json
+@using System.Threading
+
+@{
+    double testValueDouble = 1234.56789;
+    string testValueString = testValueDouble.ToString();
+    CultureInfo uiCultureInfo = Thread.CurrentThread.CurrentUICulture;
+    CultureInfo cultureInfo = Thread.CurrentThread.CurrentCulture;
+}
+
+test value [serialized] = @(JsonConvert.SerializeObject(testValueDouble))
+test value [deserialized] = @(JsonConvert.DeserializeObject<double>(testValueString))
+ui culture = @(uiCultureInfo.DisplayName)
+culture = @(cultureInfo.DisplayName)
 
 
 <body class="dx-viewport">
